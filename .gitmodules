@@ -1,0 +1,6 @@
+[submodule "lib/pfatt"]
+	path = lib/pfatt
+	url = https://github.com/BradenM/pfatt.git
+[submodule "lib/unifi-pfsense"]
+	path = lib/unifi-pfsense
+	url = https://github.com/BradenM/unifi-pfsense.git
