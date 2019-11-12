@@ -13,12 +13,12 @@ CERTS_DIR="/root/certs"
 REMOTE_TARGET="$REMOTE:$CERTS_DIR"
 
 echo "Creating remote directories..."
-ssh "$REMOTE" mkdir -p "$REMOTE_CERTS"
+ssh "$REMOTE" mkdir -p "$CERTS_DIR/CA"
 
 echo "Copying Certs..."
 scp "$CERT" "$REMOTE_TARGET/"
 scp "$KEY" "$REMOTE_TARGET/"
-scp "$CA" "$REMOTE_TARGET/"
+scp "$CA" "$REMOTE_TARGET/CA/"
 
 echo "Listing remote directory"
 ssh "$REMOTE" ls -al $CERTS_DIR
