@@ -12,13 +12,20 @@ REMOTE="root@${REMOTE_HOST}"
 CERTS_DIR="/root/certs"
 REMOTE_TARGET="$REMOTE:$CERTS_DIR"
 
+# Certs
+CERT_NAME="bradenmars_wildcard"
+R_CERT="$REMOTE_TARGET/$CERT_NAME.crt"
+R_KEY="$REMOTE_TARGET/$CERT_NAME.key"
+R_CA="$REMOTE_TARGET/CA/Acmecert.crt"
+
 echo "Creating remote directories..."
+ssh "$REMOTE" rm -rf "$CERTS_DIR"
 ssh "$REMOTE" mkdir -p "$CERTS_DIR/CA"
 
 echo "Copying Certs..."
-scp "$CERT" "$REMOTE_TARGET/"
-scp "$KEY" "$REMOTE_TARGET/"
-scp "$CA" "$REMOTE_TARGET/CA/"
+scp "$CERT" "$R_CERT"
+scp "$KEY" "$R_KEY"
+scp "$CA" "$R_CA"
 
 echo "Listing remote directory"
 ssh "$REMOTE" ls -al $CERTS_DIR
